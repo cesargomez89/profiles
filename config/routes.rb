@@ -1,7 +1,13 @@
 Profiles::Application.routes.draw do
+  root 'users#profile'
+  devise_for :users
+
   resources :folders
 
-  devise_for :users
-  resources :users
-  root 'users#profile'
+  resources :users do
+    member do
+      get :profile
+    end
+  end
+
 end
